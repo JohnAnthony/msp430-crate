@@ -328,7 +328,7 @@ pub mod g2211 {
 
     ////////
     // Calibration Data in Info Mem
-    pub const CALDCO_1MHZ: u16 = 0x10FE;    // DCOCTL  Calibration Data for 1MHz
+    pub const CALDC0_1MHZ: u16 = 0x10FE;    // DCOCTL  Calibration Data for 1MHz
     pub const CALBC1_1MHZ: u16 = 0x10FF;    // BCSCTL1 Calibration Data for 1MHz
 
     ////////
