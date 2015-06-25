@@ -1,7 +1,9 @@
 #[allow(dead_code)]
 
 pub mod g2211 {
+    ////
     // STANDARD BITS
+    ////////
     pub const BIT0: u16 = 0x0001;
     pub const BIT1: u16 = 0x0002;
     pub const BIT2: u16 = 0x0004;
@@ -19,7 +21,9 @@ pub mod g2211 {
     pub const BITE: u16 = 0x4000;
     pub const BITF: u16 = 0x8000;
 
+    ////
     // STATUS REGISTER BITS
+    ////////
     pub const C: u16      = 0x0001;
     pub const Z: u16      = 0x0002;
     pub const N: u16      = 0x0004;
@@ -30,14 +34,15 @@ pub mod g2211 {
     pub const SCG0: u16   = 0x0040;
     pub const SCG1: u16   = 0x0080;
 
+    ////
     // Low Power Modes coded with Bits 4-7 in SR
+    ////////
     pub const IE1_: u16  = 0x0000;  // Interrupt Enable 1
     pub const IE1: u16   = IE1_;    // Alias
     pub const WDTIE: u8  = 0x01;    // Watchdog Interrupt Enable
     pub const OFIE: u8   = 0x02;    // Osc. Fault  Interrupt Enable
     pub const NMIIE: u8  = 0x10;    // NMI Interrupt Enable
     pub const ACCVIE: u8 = 0x20;    // Flash Access Violation Interrupt Enable
-
     pub const IFG1_: u16 = 0x0002;  // Interrupt Flag 1
     pub const IFG1: u16 = IFG1_;    // Alias
     pub const WDTIFG: u8 = 0x01;    // Watchdog Interrupt Flag
@@ -46,7 +51,9 @@ pub mod g2211 {
     pub const RSTIFG: u8 = 0x08;    // Reset Interrupt Flag
     pub const NMIIFG: u8 = 0x10;    // NMI Interrupt Flag
 
+    ////
     // Basic Clock Module
+    ////////
     pub const __MSP430_HAS_BC2__: bool = true;  // Show that Module is available
     pub const DCOCTL_: u16  = 0x0056;   // DCO Clock Frequency Control
     pub const DCOCTL: u16   = DCOCTL_;  // Alias
@@ -127,7 +134,9 @@ pub mod g2211 {
     pub const XT2S_2: u16 = 0x80;  // Mode 2 for XT2 : 2 - 16 MHz
     pub const XT2S_3: u16 = 0xC0;  // Mode 3 for XT2 : Digital input signal
 
+    ////
     // Comparator A
+    ////////
     pub const __MSP430_HAS_CAPLUS__: bool = true; // Definition to show that Module is available
     pub const CACTL1_: u16 = 0x0059;   // Comparator A Control 1
     pub const CACTL1: u16  = CACTL1_;  // Alias
@@ -168,7 +177,9 @@ pub mod g2211 {
     pub const CAPD6: u16 = 0x40;  // Comp. A Disable Input Buffer of Port Register .6
     pub const CAPD7: u16 = 0x80;  // Comp. A Disable Input Buffer of Port Register .7
 
+    ////
     // Flash Memory
+    ////////
     pub const __MSP430_HAS_FLASH2__: bool = true; // Definition to show that Module is available
     pub const FCTL1_: u16 = 0x0128;  // FLASH Control 1
     pub const FCTL1: u16 = FCTL1_;   // Alias
@@ -256,49 +267,32 @@ pub mod g2211 {
     pub const P2REN_: u16 = 0x002F;    // Port 2 Resistor Enable
     //sfrb(P2REN, P2REN_);
 
+    ////
     // Timer A2
-    pub const __MSP430_HAS_TA2__: bool = true; // Definition to show that Module is available
-    pub const TAIV_: *const u16 = 0x012E as *mut u16;    // Timer A Interrupt Vector Word
-    pub const TAIV: *const u16 = TAIV_;    // Timer A Interrupt Vector Word
-    pub const TACTL_: *const u16 = 0x0160 as *mut u16;    // Timer A Control
-    pub const TACTL: *const u16 = TACTL_;    // Timer A Control
-    pub const TACCTL0_: *const u16 = 0x0162 as *mut u16;    // Timer A Capture/Compare Control 0
-    pub const TACCTL0: *const u16 = TACCTL0_;    // Timer A Capture/Compare Control 0
-    pub const TACCTL1_: *const u16 = 0x0164 as *mut u16;    // Timer A Capture/Compare Control 1
-    pub const TACCTL1: *const u16 = TACCTL1_;    // Timer A Capture/Compare Control 1
-    pub const TAR_: *const u16 = 0x0170 as *mut u16;    // Timer A Counter Register
-    pub const TAR: *const u16 = TAR_;    // Timer A Counter Register
-    pub const TACCR0_: *const u16 = 0x0172 as *mut u16;    // Timer A Capture/Compare 0
-    pub const TACCR0: *const u16 = TACCR0_;    // Timer A Capture/Compare 0
-    pub const TACCR1_: *const u16 = 0x0174 as *mut u16;    // Timer A Capture/Compare 1
-    pub const TACCR1: *const u16 = TACCR1_;    // Timer A Capture/Compare 1
-
+    ////////
+    pub const __MSP430_HAS_TA2__: bool = true;           // Definition to show that Module is available
+    pub const TAIV: *const u16 = 0x012E as *mut u16;     // Timer A Interrupt Vector Word
+    pub const TACTL: *const u16 = 0x0160 as *mut u16;    // Timer A Control
+    pub const TACCTL0: *const u16 = 0x0162 as *mut u16;  // Timer A Capture/Compare Control 0
+    pub const TACCTL1: *const u16 = 0x0164 as *mut u16;  // Timer A Capture/Compare Control 1
+    pub const TAR: *const u16 = 0x0170 as *mut u16;      // Timer A Counter Register
+    pub const TACCR0: *const u16 = 0x0172 as *mut u16;   // Timer A Capture/Compare 0
+    pub const TACCR1: *const u16 = 0x0174 as *mut u16;   // Timer A Capture/Compare 1
     // Alternate register names
-    pub const CCTL0_: *const u16 = TACCTL0_;  // Timer A Capture/Compare Control 0
-    pub const CCTL0: *const u16 = TACCTL0;   // Timer A Capture/Compare Control 0
-    pub const CCTL1_: *const u16 = TACCTL1_;  // Timer A Capture/Compare Control 1
-    pub const CCTL1: *const u16 = TACCTL1;   // Timer A Capture/Compare Control 1
-    pub const CCR0_: *const u16 = TACCR0_;   // Timer A Capture/Compare 0
-    pub const CCR0: *const u16 = TACCR0;    // Timer A Capture/Compare 0
-    pub const CCR1_: *const u16 = TACCR1_;   // Timer A Capture/Compare 1
-    pub const CCR1: *const u16 = TACCR1;    // Timer A Capture/Compare 1
+    pub const CCTL0: *const u16 = TACCTL0;               // Timer A Capture/Compare Control 0
+    pub const CCTL1: *const u16 = TACCTL1;               // Timer A Capture/Compare Control 1
+    pub const CCR0: *const u16 = TACCR0;                 // Timer A Capture/Compare 0
+    pub const CCR1: *const u16 = TACCR1;                 // Timer A Capture/Compare 1
     // Alternate register names - 5xx style
-    pub const TA0IV_: *const u16 = TAIV_;     // Timer A Interrupt Vector Word
-    pub const TA0IV: *const u16 = TAIV;      // Timer A Interrupt Vector Word
-    pub const TA0CTL_: *const u16 = TACTL_;    // Timer A Control
-    pub const TA0CTL: *const u16 = TACTL;     // Timer A Control
-    pub const TA0CCTL0_: *const u16 = TACCTL0_;  // Timer A Capture/Compare Control 0
-    pub const TA0CCTL0: *const u16 = TACCTL0;   // Timer A Capture/Compare Control 0
-    pub const TA0CCTL1_: *const u16 = TACCTL1_;  // Timer A Capture/Compare Control 1
-    pub const TA0CCTL1: *const u16 = TACCTL1;   // Timer A Capture/Compare Control 1
-    pub const TA0R: *const u16 = TAR;       // Timer A Counter Register
-    pub const TA0CCR0_: *const u16 = TACCR0_;   // Timer A Capture/Compare 0
-    pub const TA0CCR0: *const u16 = TACCR0;    // Timer A Capture/Compare 0
-    pub const TA0CCR1_: *const u16 = TACCR1_;   // Timer A Capture/Compare 1
-    pub const TA0CCR1: *const u16 = TACCR1;    // Timer A Capture/Compare 1
-    pub const TA0R_: *const u16 = TAR_;      // Timer A Counter Register
-    pub const TIMER0_A1_VECTOR: u16 = TIMERA1_VECTOR; // Int. Vector: Timer A CC1-2, TA
-    pub const TIMER0_A0_VECTOR: u16 = TIMERA0_VECTOR; // Int. Vector: Timer A CC0
+    pub const TA0IV: *const u16 = TAIV;                  // Timer A Interrupt Vector Word
+    pub const TA0CTL: *const u16 = TACTL;                // Timer A Control
+    pub const TA0CCTL0: *const u16 = TACCTL0;            // Timer A Capture/Compare Control 0
+    pub const TA0CCTL1: *const u16 = TACCTL1;            // Timer A Capture/Compare Control 1
+    pub const TA0R: *const u16 = TAR;                    // Timer A Counter Register
+    pub const TA0CCR0: *const u16 = TACCR0;              // Timer A Capture/Compare 0
+    pub const TA0CCR1: *const u16 = TACCR1;              // Timer A Capture/Compare 1
+    pub const TIMER0_A1_VECTOR: u16 = TIMERA1_VECTOR;    // Int. Vector: Timer A CC1-2, TA
+    pub const TIMER0_A0_VECTOR: u16 = TIMERA0_VECTOR;    // Int. Vector: Timer A CC0
 
     pub const TASSEL1: u16 = 0x0200;  // Timer A clock source select 1
     pub const TASSEL0: u16 = 0x0100;  // Timer A clock source select 0
