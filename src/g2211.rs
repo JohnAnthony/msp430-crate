@@ -1,9 +1,8 @@
 #[allow(dead_code)]
 
 pub mod g2211 {
-    ////
-    // STANDARD BITS
     ////////
+    // STANDARD BITS
     pub const BIT0: u16 = 0x0001;
     pub const BIT1: u16 = 0x0002;
     pub const BIT2: u16 = 0x0004;
@@ -21,9 +20,8 @@ pub mod g2211 {
     pub const BITE: u16 = 0x4000;
     pub const BITF: u16 = 0x8000;
 
-    ////
-    // STATUS REGISTER BITS
     ////////
+    // STATUS REGISTER BITS
     pub const C: u16      = 0x0001;
     pub const Z: u16      = 0x0002;
     pub const N: u16      = 0x0004;
@@ -34,195 +32,39 @@ pub mod g2211 {
     pub const SCG0: u16   = 0x0040;
     pub const SCG1: u16   = 0x0080;
 
-    ////
-    // Low Power Modes coded with Bits 4-7 in SR
+    ////////////////////////////////////////////////////////////////////////////
+    //// FEATURE AVAILABILITY //////////////////////////////////////////////////
+
+    pub const __MSP430_HAS_PORT1_R__: bool = true;
+    pub const __MSP430_HAS_PORT2_R__: bool = true;
+    pub const __MSP430_HAS_BC2__: bool     = true;
+    pub const __MSP430_HAS_CAPLUS__: bool  = true;
+    pub const __MSP430_HAS_FLASH2__: bool  = true;
+    pub const __MSP430_HAS_TA2__: bool     = true;
+    pub const __MSP430_HAS_WDT__: bool     = true;
+    pub const __MSP430_TI_HEADERS__: bool  = true;
+
+    ////////////////////////////////////////////////////////////////////////////
+    //// PERIPHERALS ///////////////////////////////////////////////////////////
+
     ////////
-    pub const IE1: *const u8 = 0x0000 as *mut u8;  // Interrupt Enable 1
-    pub const IE2: *const u8 = 0x0001 as *mut u8;  // Interrupt Enable 1
-    pub const WDTIE: u8  = 0x01;    // Watchdog Interrupt Enable
-    pub const OFIE: u8   = 0x02;    // Osc. Fault  Interrupt Enable
-    pub const NMIIE: u8  = 0x10;    // NMI Interrupt Enable
-    pub const ACCVIE: u8 = 0x20;    // Flash Access Violation Interrupt Enable
+    // Special Function
+    pub const IE1: *const u8  = 0x0000 as *mut u8;  // Interrupt Enable 1
+    pub const IE2: *const u8  = 0x0001 as *mut u8;  // Interrupt Enable 1
+    pub const WDTIE: u8       = 0x01;               // Watchdog Interrupt Enable
+    pub const OFIE: u8        = 0x02;               // Osc. Fault  Interrupt Enable
+    pub const NMIIE: u8       = 0x10;               // NMI Interrupt Enable
+    pub const ACCVIE: u8      = 0x20;               // Flash Access Violation Interrupt Enable
     pub const IFG1: *const u8 = 0x0002 as *mut u8;  // Interrupt Flag 1
     pub const IFG2: *const u8 = 0x0003 as *mut u8;  // Interrupt Flag 1
-    pub const WDTIFG: u8 = 0x01;    // Watchdog Interrupt Flag
-    pub const OFIFG: u8  = 0x02;    // Osc. Fault Interrupt Flag
-    pub const PORIFG: u8 = 0x04;    // Power On Interrupt Flag
-    pub const RSTIFG: u8 = 0x08;    // Reset Interrupt Flag
-    pub const NMIIFG: u8 = 0x10;    // NMI Interrupt Flag
+    pub const WDTIFG: u8      = 0x01;               // Watchdog Interrupt Flag
+    pub const OFIFG: u8       = 0x02;               // Osc. Fault Interrupt Flag
+    pub const PORIFG: u8      = 0x04;               // Power On Interrupt Flag
+    pub const RSTIFG: u8      = 0x08;               // Reset Interrupt Flag
+    pub const NMIIFG: u8      = 0x10;               // NMI Interrupt Flag
 
-    ////
-    // Basic Clock Module
     ////////
-    pub const __MSP430_HAS_BC2__: bool = true;  // Show that Module is available
-    pub const DCOCTL: *const u16  = 0x0056 as *mut u16;  // DCO Clock Frequency Control
-    pub const BCSCTL1: *const u16 = 0x0057 as *mut u16;  // Basic Clock System Control 1
-    pub const BCSCTL2: *const u16 = 0x0058 as *mut u16;  // Basic Clock System Control 2
-    pub const BCSCTL3: *const u16 = 0x0053 as *mut u16;  // Basic Clock System Control 3
-
-    pub const MOD0: u16 = 0x01;  // Modulation Bit 0
-    pub const MOD1: u16 = 0x02;  // Modulation Bit 1
-    pub const MOD2: u16 = 0x04;  // Modulation Bit 2
-    pub const MOD3: u16 = 0x08;  // Modulation Bit 3
-    pub const MOD4: u16 = 0x10;  // Modulation Bit 4
-    pub const DCO0: u16 = 0x20;  // DCO Select Bit 0
-    pub const DCO1: u16 = 0x40;  // DCO Select Bit 1
-    pub const DCO2: u16 = 0x80;  // DCO Select Bit 2
-
-    pub const RSEL0: u16  = 0x01;  // Range Select Bit 0
-    pub const RSEL1: u16  = 0x02;  // Range Select Bit 1
-    pub const RSEL2: u16  = 0x04;  // Range Select Bit 2
-    pub const RSEL3: u16  = 0x08;  // Range Select Bit 3
-    pub const DIVA0: u16  = 0x10;  // ACLK Divider 0
-    pub const DIVA1: u16  = 0x20;  // ACLK Divider 1
-    pub const XTS: u16    = 0x40;  // LFXTCLK 0:Low Freq. / 1: High Freq.
-    pub const XT2OFF: u16 = 0x80;  // Enable XT2CLK
-
-    pub const DIVA_0: u16 = 0x00;  // ACLK Divider 0: /1
-    pub const DIVA_1: u16 = 0x10;  // ACLK Divider 1: /2
-    pub const DIVA_2: u16 = 0x20;  // ACLK Divider 2: /4
-    pub const DIVA_3: u16 = 0x30;  // ACLK Divider 3: /8
-
-    pub const DIVS0: u16 = 0x02;  // SMCLK Divider 0
-    pub const DIVS1: u16 = 0x04;  // SMCLK Divider 1
-    pub const SELS: u16  = 0x08;  // SMCLK Source Select 0:DCOCLK / 1:XT2CLK/LFXTCLK
-    pub const DIVM0: u16 = 0x10;  // MCLK Divider 0
-    pub const DIVM1: u16 = 0x20;  // MCLK Divider 1
-    pub const SELM0: u16 = 0x40;  // MCLK Source Select 0
-    pub const SELM1: u16 = 0x80;  // MCLK Source Select 1
-
-    pub const DIVS_0: u16 = 0x00;  // SMCLK Divider 0: /1
-    pub const DIVS_1: u16 = 0x02;  // SMCLK Divider 1: /2
-    pub const DIVS_2: u16 = 0x04;  // SMCLK Divider 2: /4
-    pub const DIVS_3: u16 = 0x06;  // SMCLK Divider 3: /8
-
-    pub const DIVM_0: u16 = 0x00;  // MCLK Divider 0: /1
-    pub const DIVM_1: u16 = 0x10;  // MCLK Divider 1: /2
-    pub const DIVM_2: u16 = 0x20;  // MCLK Divider 2: /4
-    pub const DIVM_3: u16 = 0x30;  // MCLK Divider 3: /8
-
-    pub const SELM_0: u16 = 0x00;  // MCLK Source Select 0: DCOCLK
-    pub const SELM_1: u16 = 0x40;  // MCLK Source Select 1: DCOCLK
-    pub const SELM_2: u16 = 0x80;  // MCLK Source Select 2: XT2CLK/LFXTCLK
-    pub const SELM_3: u16 = 0xC0;  // MCLK Source Select 3: LFXTCLK
-
-    pub const LFXT1OF: u16 = 0x01;  // Low/high Frequency Oscillator Fault Flag
-    pub const XT2OF: u16   = 0x02;  // High frequency oscillator 2 fault flag
-    pub const XCAP0: u16   = 0x04;  // XIN/XOUT Cap 0
-    pub const XCAP1: u16   = 0x08;  // XIN/XOUT Cap 1
-    pub const LFXT1S0: u16 = 0x10;  // Mode 0 for LFXT1 (XTS = 0)
-    pub const LFXT1S1: u16 = 0x20;  // Mode 1 for LFXT1 (XTS = 0)
-    pub const XT2S0: u16   = 0x40;  // Mode 0 for XT2
-    pub const XT2S1: u16   = 0x80;  // Mode 1 for XT2
-
-    pub const XCAP_0: u16 = 0x00;  // XIN/XOUT Cap : 0 pF
-    pub const XCAP_1: u16 = 0x04;  // XIN/XOUT Cap : 6 pF
-    pub const XCAP_2: u16 = 0x08;  // XIN/XOUT Cap : 10 pF
-    pub const XCAP_3: u16 = 0x0C;  // XIN/XOUT Cap : 12.5 pF
-
-    pub const LFXT1S_0: u16 = 0x00;  // Mode 0 for LFXT1 : Normal operation
-    pub const LFXT1S_1: u16 = 0x10;  // Mode 1 for LFXT1 : Reserved
-    pub const LFXT1S_2: u16 = 0x20;  // Mode 2 for LFXT1 : VLO
-    pub const LFXT1S_3: u16 = 0x30;  // Mode 3 for LFXT1 : Digital input signal
-
-    pub const XT2S_0: u16 = 0x00;  // Mode 0 for XT2 : 0.4 - 1 MHz
-    pub const XT2S_1: u16 = 0x40;  // Mode 1 for XT2 : 1 - 4 MHz
-    pub const XT2S_2: u16 = 0x80;  // Mode 2 for XT2 : 2 - 16 MHz
-    pub const XT2S_3: u16 = 0xC0;  // Mode 3 for XT2 : Digital input signal
-
-    ////
-    // Comparator A
-    ////////
-    pub const __MSP430_HAS_CAPLUS__: bool = true; // Definition to show that Module is available
-    pub const CAPD: *const u16 = 0x005B as *mut u16;    // Comparator A Port Disable
-    pub const CACTL2: *const u16 = 0x005A as *mut u16;  // Comparator A Control 2
-    pub const CACTL1: *const u16 = 0x0059 as *mut u16;  // Comparator A Control 1
-
-    pub const CAIFG: u16  = 0x01;  // Comp. A Interrupt Flag
-    pub const CAIE: u16   = 0x02;  // Comp. A Interrupt Enable
-    pub const CAIES: u16  = 0x04;  // Comp. A Int. Edge Select: 0:rising / 1:falling
-    pub const CAON: u16   = 0x08;  // Comp. A enable
-    pub const CAREF0: u16 = 0x10;  // Comp. A Internal Reference Select 0
-    pub const CAREF1: u16 = 0x20;  // Comp. A Internal Reference Select 1
-    pub const CARSEL: u16 = 0x40;  // Comp. A Internal Reference Enable
-    pub const CAEX: u16   = 0x80;  // Comp. A Exchange Inputs
-
-    pub const CAREF_0: u16 = 0x00;  // Comp. A Int. Ref. Select 0 : Off
-    pub const CAREF_1: u16 = 0x10;  // Comp. A Int. Ref. Select 1 : 0.25*Vcc
-    pub const CAREF_2: u16 = 0x20;  // Comp. A Int. Ref. Select 2 : 0.5*Vcc
-    pub const CAREF_3: u16 = 0x30;  // Comp. A Int. Ref. Select 3 : Vt
-
-    pub const CAOUT: u16   = 0x01;  // Comp. A Output
-    pub const CAF: u16     = 0x02;  // Comp. A Enable Output Filter
-    pub const P2CA0: u16   = 0x04;  // Comp. A +Terminal Multiplexer
-    pub const P2CA1: u16   = 0x08;  // Comp. A -Terminal Multiplexer
-    pub const P2CA2: u16   = 0x10;  // Comp. A -Terminal Multiplexer
-    pub const P2CA3: u16   = 0x20;  // Comp. A -Terminal Multiplexer
-    pub const P2CA4: u16   = 0x40;  // Comp. A +Terminal Multiplexer
-    pub const CASHORT: u16 = 0x80;  // Comp. A Short + and - Terminals
-
-    pub const CAPD0: u16 = 0x01;  // Comp. A Disable Input Buffer of Port Register .0
-    pub const CAPD1: u16 = 0x02;  // Comp. A Disable Input Buffer of Port Register .1
-    pub const CAPD2: u16 = 0x04;  // Comp. A Disable Input Buffer of Port Register .2
-    pub const CAPD3: u16 = 0x08;  // Comp. A Disable Input Buffer of Port Register .3
-    pub const CAPD4: u16 = 0x10;  // Comp. A Disable Input Buffer of Port Register .4
-    pub const CAPD5: u16 = 0x20;  // Comp. A Disable Input Buffer of Port Register .5
-    pub const CAPD6: u16 = 0x40;  // Comp. A Disable Input Buffer of Port Register .6
-    pub const CAPD7: u16 = 0x80;  // Comp. A Disable Input Buffer of Port Register .7
-
-    ////
-    // Flash Memory
-    ////////
-    pub const __MSP430_HAS_FLASH2__: bool = true; // Definition to show that Module is available
-    pub const FCTL1: *const u16 = 0x0128 as *mut u16;  // FLASH Control 1
-    pub const FCTL2: *const u16 = 0x012A as *mut u16;  // FLASH Control 2
-    pub const FCTL3: *const u16 = 0x012C as *mut u16;  // FLASH Control 3
-
-    pub const FRKEY: u16 = 0x9600;  // Flash key returned by read
-    pub const FWKEY: u16 = 0xA500;  // Flash key for write
-    pub const FXKEY: u16 = 0x3300;  // for use with XOR instruction
-
-    pub const ERASE: u16  = 0x0002;  // Enable bit for Flash segment erase
-    pub const MERAS: u16  = 0x0004;  // Enable bit for Flash mass erase
-    pub const WRT: u16    = 0x0040;  // Enable bit for Flash write
-    pub const BLKWRT: u16 = 0x0080;  // Enable bit for Flash segment write
-    pub const SEGWRT: u16 = 0x0080;  // old definition */ /* Enable bit for Flash segment write
-
-    pub const FN0: u16 = 0x0001;  // Divide Flash clock by 1 to 64 using FN0 to FN5 according to:
-    pub const FN1: u16 = 0x0002;  // 32*FN5 + 16*FN4 + 8*FN3 + 4*FN2 + 2*FN1 + FN0 + 1
-    //    #ifndef FN2
-    pub const FN2: u16 = 0x0004;
-    //    #endif
-    //    #ifndef FN3
-    pub const FN3: u16 = 0x0008;
-    //    #endif
-    //    #ifndef FN4
-    pub const FN4: u16 = 0x0010;
-    //    #endif
-    pub const FN5: u16 = 0x0020;
-    pub const FSSEL0: u16 = 0x0040;  // Flash clock select 0 */        /* to distinguish from USART SSELx
-    pub const FSSEL1: u16 = 0x0080;  // Flash clock select 1
-
-    pub const FSSEL_0: u16 = 0x0000;  // Flash clock select: 0 - ACLK
-    pub const FSSEL_1: u16 = 0x0040;  // Flash clock select: 1 - MCLK
-    pub const FSSEL_2: u16 = 0x0080;  // Flash clock select: 2 - SMCLK
-    pub const FSSEL_3: u16 = 0x00C0;  // Flash clock select: 3 - SMCLK
-
-    pub const BUSY: u16 = 0x0001;  // Flash busy: 1
-    pub const KEYV: u16 = 0x0002;  // Flash Key violation flag
-    pub const ACCVIFG: u16 = 0x0004;  // Flash Access violation flag
-    pub const WAIT: u16 = 0x0008;  // Wait flag for segment write
-    pub const LOCK: u16 = 0x0010;  // Lock bit: 1 - Flash is locked (read only)
-    pub const EMEX: u16 = 0x0020;  // Flash Emergency Exit
-    pub const LOCKA: u16 = 0x0040;  // Segment A Lock bit: read = 1 - Segment is locked (read only)
-    pub const FAIL: u16 = 0x0080;  // Last Program or Erase failed
-
-    ////
-    // DIGITAL I/O Port1/2 Pull up / Pull down Resistors
-    ////////
-    pub const __MSP430_HAS_PORT1_R__: bool = true; // Definition to show that Module is available
-    pub const __MSP430_HAS_PORT2_R__: bool = true; // Definition to show that Module is available
-
+    // Digital I/O Port1/2 Pull up / Pull down Resistors
     pub const P1IN: *const u8  = 0x0020 as *mut u8;  // Port 1 Input
     pub const P1OUT: *const u8 = 0x0021 as *mut u8;  // Port 1 Output
     pub const P1DIR: *const u8 = 0x0022 as *mut u8;  // Port 1 Direction
@@ -241,10 +83,158 @@ pub mod g2211 {
     pub const P2SEL: *const u8 = 0x002E as *mut u8;  // Port 2 Selection
     pub const P2REN: *const u8 = 0x002F as *mut u8;  // Port 2 Resistor Enable
 
-    ////
-    // Timer A2
     ////////
-    pub const __MSP430_HAS_TA2__: bool = true;           // Definition to show that Module is available
+    // Basic Clock Module
+    pub const BCSCTL3: *const u8 = 0x0053 as *mut u8;  // Basic Clock System Control 3
+    pub const DCOCTL: *const u8  = 0x0056 as *mut u8;  // DCO Clock Frequency Control
+    pub const BCSCTL1: *const u8 = 0x0057 as *mut u8;  // Basic Clock System Control 1
+    pub const BCSCTL2: *const u8 = 0x0058 as *mut u8;  // Basic Clock System Control 2
+
+    pub const MOD0: u8     = 0x01;  // Modulation Bit 0
+    pub const MOD1: u8     = 0x02;  // Modulation Bit 1
+    pub const MOD2: u8     = 0x04;  // Modulation Bit 2
+    pub const MOD3: u8     = 0x08;  // Modulation Bit 3
+    pub const MOD4: u8     = 0x10;  // Modulation Bit 4
+    pub const DCO0: u8     = 0x20;  // DCO Select Bit 0
+    pub const DCO1: u8     = 0x40;  // DCO Select Bit 1
+    pub const DCO2: u8     = 0x80;  // DCO Select Bit 2
+    pub const RSEL0: u8    = 0x01;  // Range Select Bit 0
+    pub const RSEL1: u8    = 0x02;  // Range Select Bit 1
+    pub const RSEL2: u8    = 0x04;  // Range Select Bit 2
+    pub const RSEL3: u8    = 0x08;  // Range Select Bit 3
+    pub const DIVA0: u8    = 0x10;  // ACLK Divider 0
+    pub const DIVA1: u8    = 0x20;  // ACLK Divider 1
+    pub const XTS: u8      = 0x40;  // LFXTCLK 0:Low Freq. / 1: High Freq.
+    pub const XT2OFF: u8   = 0x80;  // Enable XT2CLK
+    pub const DIVA_0: u8   = 0x00;  // ACLK Divider 0: /1
+    pub const DIVA_1: u8   = 0x10;  // ACLK Divider 1: /2
+    pub const DIVA_2: u8   = 0x20;  // ACLK Divider 2: /4
+    pub const DIVA_3: u8   = 0x30;  // ACLK Divider 3: /8
+    pub const DIVS0: u8    = 0x02;  // SMCLK Divider 0
+    pub const DIVS1: u8    = 0x04;  // SMCLK Divider 1
+    pub const SELS: u8     = 0x08;  // SMCLK Source Select 0:DCOCLK / 1:XT2CLK/LFXTCLK
+    pub const DIVM0: u8    = 0x10;  // MCLK Divider 0
+    pub const DIVM1: u8    = 0x20;  // MCLK Divider 1
+    pub const SELM0: u8    = 0x40;  // MCLK Source Select 0
+    pub const SELM1: u8    = 0x80;  // MCLK Source Select 1
+    pub const DIVS_0: u8   = 0x00;  // SMCLK Divider 0: /1
+    pub const DIVS_1: u8   = 0x02;  // SMCLK Divider 1: /2
+    pub const DIVS_2: u8   = 0x04;  // SMCLK Divider 2: /4
+    pub const DIVS_3: u8   = 0x06;  // SMCLK Divider 3: /8
+    pub const DIVM_0: u8   = 0x00;  // MCLK Divider 0: /1
+    pub const DIVM_1: u8   = 0x10;  // MCLK Divider 1: /2
+    pub const DIVM_2: u8   = 0x20;  // MCLK Divider 2: /4
+    pub const DIVM_3: u8   = 0x30;  // MCLK Divider 3: /8
+    pub const SELM_0: u8   = 0x00;  // MCLK Source Select 0: DCOCLK
+    pub const SELM_1: u8   = 0x40;  // MCLK Source Select 1: DCOCLK
+    pub const SELM_2: u8   = 0x80;  // MCLK Source Select 2: XT2CLK/LFXTCLK
+    pub const SELM_3: u8   = 0xC0;  // MCLK Source Select 3: LFXTCLK
+    pub const LFXT1OF: u8  = 0x01;  // Low/high Frequency Oscillator Fault Flag
+    pub const XT2OF: u8    = 0x02;  // High frequency oscillator 2 fault flag
+    pub const XCAP0: u8    = 0x04;  // XIN/XOUT Cap 0
+    pub const XCAP1: u8    = 0x08;  // XIN/XOUT Cap 1
+    pub const LFXT1S0: u8  = 0x10;  // Mode 0 for LFXT1 (XTS = 0)
+    pub const LFXT1S1: u8  = 0x20;  // Mode 1 for LFXT1 (XTS = 0)
+    pub const XT2S0: u8    = 0x40;  // Mode 0 for XT2
+    pub const XT2S1: u8    = 0x80;  // Mode 1 for XT2
+    pub const XCAP_0: u8   = 0x00;  // XIN/XOUT Cap : 0 pF
+    pub const XCAP_1: u8   = 0x04;  // XIN/XOUT Cap : 6 pF
+    pub const XCAP_2: u8   = 0x08;  // XIN/XOUT Cap : 10 pF
+    pub const XCAP_3: u8   = 0x0C;  // XIN/XOUT Cap : 12.5 pF
+    pub const LFXT1S_0: u8 = 0x00;  // Mode 0 for LFXT1 : Normal operation
+    pub const LFXT1S_1: u8 = 0x10;  // Mode 1 for LFXT1 : Reserved
+    pub const LFXT1S_2: u8 = 0x20;  // Mode 2 for LFXT1 : VLO
+    pub const LFXT1S_3: u8 = 0x30;  // Mode 3 for LFXT1 : Digital input signal
+    pub const XT2S_0: u8   = 0x00;  // Mode 0 for XT2 : 0.4 - 1 MHz
+    pub const XT2S_1: u8   = 0x40;  // Mode 1 for XT2 : 1 - 4 MHz
+    pub const XT2S_2: u8   = 0x80;  // Mode 2 for XT2 : 2 - 16 MHz
+    pub const XT2S_3: u8   = 0xC0;  // Mode 3 for XT2 : Digital input signal
+
+    ////////
+    // Comparator A
+    pub const CAPD: *const u8   = 0x005B as *mut u8;  // Comparator A Port Disable
+    pub const CACTL2: *const u8 = 0x005A as *mut u8;  // Comparator A Control 2
+    pub const CACTL1: *const u8 = 0x0059 as *mut u8;  // Comparator A Control 1
+
+    pub const CAIFG: u8   = 0x01;  // Comp. A Interrupt Flag
+    pub const CAIE: u8    = 0x02;  // Comp. A Interrupt Enable
+    pub const CAIES: u8   = 0x04;  // Comp. A Int. Edge Select: 0:rising / 1:falling
+    pub const CAON: u8    = 0x08;  // Comp. A enable
+    pub const CAREF0: u8  = 0x10;  // Comp. A Internal Reference Select 0
+    pub const CAREF1: u8  = 0x20;  // Comp. A Internal Reference Select 1
+    pub const CARSEL: u8  = 0x40;  // Comp. A Internal Reference Enable
+    pub const CAEX: u8    = 0x80;  // Comp. A Exchange Inputs
+    pub const CAREF_0: u8 = 0x00;  // Comp. A Int. Ref. Select 0 : Off
+    pub const CAREF_1: u8 = 0x10;  // Comp. A Int. Ref. Select 1 : 0.25*Vcc
+    pub const CAREF_2: u8 = 0x20;  // Comp. A Int. Ref. Select 2 : 0.5*Vcc
+    pub const CAREF_3: u8 = 0x30;  // Comp. A Int. Ref. Select 3 : Vt
+    pub const CAOUT: u8   = 0x01;  // Comp. A Output
+    pub const CAF: u8     = 0x02;  // Comp. A Enable Output Filter
+    pub const P2CA0: u8   = 0x04;  // Comp. A +Terminal Multiplexer
+    pub const P2CA1: u8   = 0x08;  // Comp. A -Terminal Multiplexer
+    pub const P2CA2: u8   = 0x10;  // Comp. A -Terminal Multiplexer
+    pub const P2CA3: u8   = 0x20;  // Comp. A -Terminal Multiplexer
+    pub const P2CA4: u8   = 0x40;  // Comp. A +Terminal Multiplexer
+    pub const CASHORT: u8 = 0x80;  // Comp. A Short + and - Terminals
+    pub const CAPD0: u8   = 0x01;  // Comp. A Disable Input Buffer of Port Register .0
+    pub const CAPD1: u8   = 0x02;  // Comp. A Disable Input Buffer of Port Register .1
+    pub const CAPD2: u8   = 0x04;  // Comp. A Disable Input Buffer of Port Register .2
+    pub const CAPD3: u8   = 0x08;  // Comp. A Disable Input Buffer of Port Register .3
+    pub const CAPD4: u8   = 0x10;  // Comp. A Disable Input Buffer of Port Register .4
+    pub const CAPD5: u8   = 0x20;  // Comp. A Disable Input Buffer of Port Register .5
+    pub const CAPD6: u8   = 0x40;  // Comp. A Disable Input Buffer of Port Register .6
+    pub const CAPD7: u8   = 0x80;  // Comp. A Disable Input Buffer of Port Register .7
+
+    ////////
+    // Watchdog Timer
+    pub const WDTCTL: *const u16 = 0x0120 as *mut u16;
+    pub const WDTIS0: u16    = 0x0001;
+    pub const WDTIS1: u16    = 0x0002;
+    pub const WDTSSEL: u16   = 0x0004;
+    pub const WDTCNTCL: u16  = 0x0008;
+    pub const WDTTMSEL: u16  = 0x0010;
+    pub const WDTNMI: u16    = 0x0020;
+    pub const WDTNMIES: u16  = 0x0040;
+    pub const WDTHOLD: u16   = 0x0080;
+    pub const WDTPW: u16     = 0x5A00;
+
+    ////////
+    // Flash Memory
+    pub const FCTL1: *const u16 = 0x0128 as *mut u16;  // FLASH Control 1
+    pub const FCTL2: *const u16 = 0x012A as *mut u16;  // FLASH Control 2
+    pub const FCTL3: *const u16 = 0x012C as *mut u16;  // FLASH Control 3
+
+    pub const FRKEY: u16 = 0x9600;  // Flash key returned by read
+    pub const FWKEY: u16 = 0xA500;  // Flash key for write
+    pub const FXKEY: u16 = 0x3300;  // for use with XOR instruction
+    pub const ERASE: u16  = 0x0002;  // Enable bit for Flash segment erase
+    pub const MERAS: u16  = 0x0004;  // Enable bit for Flash mass erase
+    pub const WRT: u16    = 0x0040;  // Enable bit for Flash write
+    pub const BLKWRT: u16 = 0x0080;  // Enable bit for Flash segment write
+    pub const SEGWRT: u16 = 0x0080;  // old definition */ /* Enable bit for Flash segment write
+    pub const FN0: u16 = 0x0001;  // Divide Flash clock by 1 to 64 using FN0 to FN5 according to:
+    pub const FN1: u16 = 0x0002;  // 32*FN5 + 16*FN4 + 8*FN3 + 4*FN2 + 2*FN1 + FN0 + 1
+    pub const FN2: u16 = 0x0004;
+    pub const FN3: u16 = 0x0008;
+    pub const FN4: u16 = 0x0010;
+    pub const FN5: u16 = 0x0020;
+    pub const FSSEL0: u16 = 0x0040;  // Flash clock select 0 */        /* to distinguish from USART SSELx
+    pub const FSSEL1: u16 = 0x0080;  // Flash clock select 1
+    pub const FSSEL_0: u16 = 0x0000;  // Flash clock select: 0 - ACLK
+    pub const FSSEL_1: u16 = 0x0040;  // Flash clock select: 1 - MCLK
+    pub const FSSEL_2: u16 = 0x0080;  // Flash clock select: 2 - SMCLK
+    pub const FSSEL_3: u16 = 0x00C0;  // Flash clock select: 3 - SMCLK
+    pub const BUSY: u16 = 0x0001;  // Flash busy: 1
+    pub const KEYV: u16 = 0x0002;  // Flash Key violation flag
+    pub const ACCVIFG: u16 = 0x0004;  // Flash Access violation flag
+    pub const WAIT: u16 = 0x0008;  // Wait flag for segment write
+    pub const LOCK: u16 = 0x0010;  // Lock bit: 1 - Flash is locked (read only)
+    pub const EMEX: u16 = 0x0020;  // Flash Emergency Exit
+    pub const LOCKA: u16 = 0x0040;  // Segment A Lock bit: read = 1 - Segment is locked (read only)
+    pub const FAIL: u16 = 0x0080;  // Last Program or Erase failed
+
+    ////////
+    // Timer A2
     pub const TAIV: *const u16 = 0x012E as *mut u16;     // Timer A Interrupt Vector Word
     pub const TACTL: *const u16 = 0x0160 as *mut u16;    // Timer A Control
     pub const TACCTL0: *const u16 = 0x0162 as *mut u16;  // Timer A Capture/Compare Control 0
@@ -252,22 +242,6 @@ pub mod g2211 {
     pub const TAR: *const u16 = 0x0170 as *mut u16;      // Timer A Counter Register
     pub const TACCR0: *const u16 = 0x0172 as *mut u16;   // Timer A Capture/Compare 0
     pub const TACCR1: *const u16 = 0x0174 as *mut u16;   // Timer A Capture/Compare 1
-    // Alternate register names
-    pub const CCR1: *const u16 = TACCR1;                 // Timer A Capture/Compare 1
-    pub const CCR0: *const u16 = TACCR0;                 // Timer A Capture/Compare 0
-    pub const CCTL1: *const u16 = TACCTL1;               // Timer A Capture/Compare Control 1
-    pub const CCTL0: *const u16 = TACCTL0;               // Timer A Capture/Compare Control 0
-    // Alternate register names - 5xx style
-    pub const TA0IV: *const u16 = TAIV;                  // Timer A Interrupt Vector Word
-    pub const TA0CTL: *const u16 = TACTL;                // Timer A Control
-    pub const TA0CCTL0: *const u16 = TACCTL0;            // Timer A Capture/Compare Control 0
-    pub const TA0CCTL1: *const u16 = TACCTL1;            // Timer A Capture/Compare Control 1
-    pub const TA0R: *const u16 = TAR;                    // Timer A Counter Register
-    pub const TA0CCR0: *const u16 = TACCR0;              // Timer A Capture/Compare 0
-    pub const TA0CCR1: *const u16 = TACCR1;              // Timer A Capture/Compare 1
-    pub const TIMER0_A1_VECTOR: u16 = TIMERA1_VECTOR;    // Int. Vector: Timer A CC1-2, TA
-    pub const TIMER0_A0_VECTOR: u16 = TIMERA0_VECTOR;    // Int. Vector: Timer A CC0
-
     pub const TASSEL1: u16 = 0x0200;  // Timer A clock source select 1
     pub const TASSEL0: u16 = 0x0100;  // Timer A clock source select 0
     pub const ID1: u16 = 0x0080;  // Timer A clock input divider 1
@@ -340,21 +314,6 @@ pub mod g2211 {
     pub const TA0IV_8: u16 = 0x0008;    // Reserved
     pub const TA0IV_TA0IFG: u16 = 0x000E;    // TA0IFG
 
-    // WATCHDOG TIMER
-    pub const __MSP430_HAS_WDT__: bool = true;
-    pub const WDTCTL: *const u16 = 0x0120 as *mut u16;
-    pub const WDTIS0: u16    = 0x0001;
-    pub const WDTIS1: u16    = 0x0002;
-    pub const WDTSSEL: u16   = 0x0004;
-    pub const WDTCNTCL: u16  = 0x0008;
-    pub const WDTTMSEL: u16  = 0x0010;
-    pub const WDTNMI: u16    = 0x0020;
-    pub const WDTNMIES: u16  = 0x0040;
-    pub const WDTHOLD: u16   = 0x0080;
-    pub const WDTPW: u16     = 0x5A00;
-
-    pub const __MSP430G2211: bool = true;
-    pub const __MSP430_TI_HEADERS__: bool = true;
     // WDT-interval times [1ms] coded with Bits 0-2
     // WDT is clocked by fSMCLK (assumed 1MHz)
     pub const WDT_MDLY_32: u16 = WDTPW+WDTTMSEL+WDTCNTCL;                         // 32ms interval (default)
@@ -383,17 +342,15 @@ pub mod g2211 {
     // pub const WDTIE: u16 = 0x01
     // pub const WDTIFG: u16 = 0x01
 
-    ////
-    // Calibration Data in Info Mem
     ////////
+    // Calibration Data in Info Mem
     //    #ifndef __DisableCalData
     pub const CALDCO_1MHZ: u16 = 0x10FE;    // DCOCTL  Calibration Data for 1MHz
     pub const CALBC1_1MHZ: u16 = 0x10FF;    // BCSCTL1 Calibration Data for 1MHz
     //    #endif // #ifndef __DisableCalData
 
-    ////
-    // Interrupt Vectors (offset from 0xFFE0)
     ////////
+    // Interrupt Vectors (offset from 0xFFE0)
     pub const PORT1_VECTOR: u16 = 0x0004;  // 0xFFE4 Port 1
     pub const PORT2_VECTOR: u16 = 0x0006;  // 0xFFE6 Port 2
     pub const TIMERA1_VECTOR: u16 = 0x0010;  // 0xFFF0 Timer A CC1-2, TA
@@ -402,4 +359,20 @@ pub mod g2211 {
     pub const COMPARATORA_VECTOR: u16 = 0x0016; // 0xFFF6 Comparator A
     pub const NMI_VECTOR: u16 = 0x001C; // 0xFFFC Non-maskable
     pub const RESET_VECTOR: u16 = 0x001E; // 0xFFFE Reset [Highest Priority]
+    pub const TIMER0_A1_VECTOR: u16 = TIMERA1_VECTOR;    // Int. Vector: Timer A CC1-2, TA
+
+    // Alternate register names
+    pub const CCR1: *const u16 = TACCR1;                 // Timer A Capture/Compare 1
+    pub const CCR0: *const u16 = TACCR0;                 // Timer A Capture/Compare 0
+    pub const CCTL1: *const u16 = TACCTL1;               // Timer A Capture/Compare Control 1
+    pub const CCTL0: *const u16 = TACCTL0;               // Timer A Capture/Compare Control 0
+    // Alternate register names - 5xx style
+    pub const TA0IV: *const u16 = TAIV;                  // Timer A Interrupt Vector Word
+    pub const TA0CTL: *const u16 = TACTL;                // Timer A Control
+    pub const TA0CCTL0: *const u16 = TACCTL0;            // Timer A Capture/Compare Control 0
+    pub const TA0CCTL1: *const u16 = TACCTL1;            // Timer A Capture/Compare Control 1
+    pub const TA0R: *const u16 = TAR;                    // Timer A Counter Register
+    pub const TA0CCR0: *const u16 = TACCR0;              // Timer A Capture/Compare 0
+    pub const TA0CCR1: *const u16 = TACCR1;              // Timer A Capture/Compare 1
+    pub const TIMER0_A0_VECTOR: u16 = TIMERA0_VECTOR;    // Int. Vector: Timer A CC0
 }
