@@ -37,16 +37,14 @@ pub mod g2211 {
     ////
     // Low Power Modes coded with Bits 4-7 in SR
     ////////
-    pub const IE1_: u16  = 0x0000;  // Interrupt Enable 1
-    pub const IE1: u16   = IE1_;    // Alias
+    pub const IE1: u16   = 0x0000;  // Interrupt Enable 1
     pub const WDTIE: u8  = 0x01;    // Watchdog Interrupt Enable
     pub const OFIE: u8   = 0x02;    // Osc. Fault  Interrupt Enable
     pub const NMIIE: u8  = 0x10;    // NMI Interrupt Enable
     pub const ACCVIE: u8 = 0x20;    // Flash Access Violation Interrupt Enable
-    pub const IFG1_: u16 = 0x0002;  // Interrupt Flag 1
-    pub const IFG1: u16 = IFG1_;    // Alias
+    pub const IFG1: u16  = 0x0002;  // Interrupt Flag 1
     pub const WDTIFG: u8 = 0x01;    // Watchdog Interrupt Flag
-    pub const OFIFG: u8 = 0x02;     // Osc. Fault Interrupt Flag
+    pub const OFIFG: u8  = 0x02;    // Osc. Fault Interrupt Flag
     pub const PORIFG: u8 = 0x04;    // Power On Interrupt Flag
     pub const RSTIFG: u8 = 0x08;    // Reset Interrupt Flag
     pub const NMIIFG: u8 = 0x10;    // NMI Interrupt Flag
@@ -55,14 +53,10 @@ pub mod g2211 {
     // Basic Clock Module
     ////////
     pub const __MSP430_HAS_BC2__: bool = true;  // Show that Module is available
-    pub const DCOCTL_: u16  = 0x0056;   // DCO Clock Frequency Control
-    pub const DCOCTL: u16   = DCOCTL_;  // Alias
-    pub const BCSCTL1_: u16 = 0x0057;   // Basic Clock System Control 1
-    pub const BCSCTL1: u16  = BCSCTL1_; // Alias
-    pub const BCSCTL2_: u16 = 0x0058;   // Basic Clock System Control 2
-    pub const BCSCTL2: u16  = BCSCTL2_; // Alias
-    pub const BCSCTL3_: u16 = 0x0053;   // Basic Clock System Control 3
-    pub const BCSCTL3: u16  = BCSCTL3_; // Alias
+    pub const DCOCTL: u16  = 0x0056;   // DCO Clock Frequency Control
+    pub const BCSCTL1: u16 = 0x0057;   // Basic Clock System Control 1
+    pub const BCSCTL2: u16 = 0x0058;   // Basic Clock System Control 2
+    pub const BCSCTL3: u16 = 0x0053;   // Basic Clock System Control 3
 
     pub const MOD0: u16 = 0x01;  // Modulation Bit 0
     pub const MOD1: u16 = 0x02;  // Modulation Bit 1
@@ -138,12 +132,9 @@ pub mod g2211 {
     // Comparator A
     ////////
     pub const __MSP430_HAS_CAPLUS__: bool = true; // Definition to show that Module is available
-    pub const CACTL1_: u16 = 0x0059;   // Comparator A Control 1
-    pub const CACTL1: u16  = CACTL1_;  // Alias
-    pub const CACTL2_: u16 = 0x005A;   // Comparator A Control 2
-    pub const CACTL2: u16  = CACTL2_;  // Alias
-    pub const CAPD_: u16   = 0x005B;   // Comparator A Port Disable
-    pub const CAPD: u16    = CAPD_;    // Alias
+    pub const CACTL1: u16 = 0x0059;   // Comparator A Control 1
+    pub const CACTL2: u16 = 0x005A;   // Comparator A Control 2
+    pub const CAPD: u16   = 0x005B;   // Comparator A Port Disable
 
     pub const CAIFG: u16  = 0x01;  // Comp. A Interrupt Flag
     pub const CAIE: u16   = 0x02;  // Comp. A Interrupt Enable
@@ -181,12 +172,9 @@ pub mod g2211 {
     // Flash Memory
     ////////
     pub const __MSP430_HAS_FLASH2__: bool = true; // Definition to show that Module is available
-    pub const FCTL1_: u16 = 0x0128;  // FLASH Control 1
-    pub const FCTL1: u16 = FCTL1_;   // Alias
-    pub const FCTL2_: u16 = 0x012A;  // FLASH Control 2
-    pub const FCTL2: u16 = FCTL2_;   // Alias
-    pub const FCTL3_: u16 = 0x012C;  // FLASH Control 3
-    pub const FCTL3: u16 = FCTL3_;   // Alias
+    pub const FCTL1: u16 = 0x0128;  // FLASH Control 1
+    pub const FCTL2: u16 = 0x012A;  // FLASH Control 2
+    pub const FCTL3: u16 = 0x012C;  // FLASH Control 3
 
     pub const FRKEY: u16 = 0x9600;  // Flash key returned by read
     pub const FWKEY: u16 = 0xA500;  // Flash key for write
@@ -227,45 +215,29 @@ pub mod g2211 {
     pub const LOCKA: u16 = 0x0040;  // Segment A Lock bit: read = 1 - Segment is locked (read only)
     pub const FAIL: u16 = 0x0080;  // Last Program or Erase failed
 
-    /************************************************************
-     * DIGITAL I/O Port1/2 Pull up / Pull down Resistors
-     ************************************************************/
+    ////
+    // DIGITAL I/O Port1/2 Pull up / Pull down Resistors
+    ////////
     pub const __MSP430_HAS_PORT1_R__: bool = true; // Definition to show that Module is available
     pub const __MSP430_HAS_PORT2_R__: bool = true; // Definition to show that Module is available
 
-    pub const P1IN_: u16 = 0x0020;    // Port 1 Input
-    //        const_sfrb(P1IN, P1IN_);
-    pub const P1OUT_: u16 = 0x0021;    // Port 1 Output
-    //sfrb(P1OUT, P1OUT_);
-    pub const P1DIR_: u16 = 0x0022;    // Port 1 Direction
-    //sfrb(P1DIR, P1DIR_);
-    pub const P1IFG_: u16 = 0x0023;    // Port 1 Interrupt Flag
-    //sfrb(P1IFG, P1IFG_);
-    pub const P1IES_: u16 = 0x0024;    // Port 1 Interrupt Edge Select
-    //sfrb(P1IES, P1IES_);
-    pub const P1IE_: u16 = 0x0025;    // Port 1 Interrupt Enable
-    //sfrb(P1IE, P1IE_);
-    pub const P1SEL_: u16 = 0x0026;    // Port 1 Selection
-    //sfrb(P1SEL, P1SEL_);
-    pub const P1REN_: u16 = 0x0027;    // Port 1 Resistor Enable
-    //sfrb(P1REN, P1REN_);
+    pub const P1IN: u16  = 0x0020;    // Port 1 Input
+    pub const P1OUT: u16 = 0x0021;    // Port 1 Output
+    pub const P1DIR: u16 = 0x0022;    // Port 1 Direction
+    pub const P1IFG: u16 = 0x0023;    // Port 1 Interrupt Flag
+    pub const P1IES: u16 = 0x0024;    // Port 1 Interrupt Edge Select
+    pub const P1IE: u16  = 0x0025;    // Port 1 Interrupt Enable
+    pub const P1SEL: u16 = 0x0026;    // Port 1 Selection
+    pub const P1REN: u16 = 0x0027;    // Port 1 Resistor Enable
 
-    pub const P2IN_: u16 = 0x0028;    // Port 2 Input
-    //const_sfrb(P2IN, P2IN_);
-    pub const P2OUT_: u16 = 0x0029;    // Port 2 Output
-    //sfrb(P2OUT, P2OUT_);
-    pub const P2DIR_: u16 = 0x002A;    // Port 2 Direction
-    //sfrb(P2DIR, P2DIR_);
-    pub const P2IFG_: u16 = 0x002B;    // Port 2 Interrupt Flag
-    //sfrb(P2IFG, P2IFG_);
-    pub const P2IES_: u16 = 0x002C;    // Port 2 Interrupt Edge Select
-    //sfrb(P2IES, P2IES_);
-    pub const P2IE_: u16 = 0x002D;    // Port 2 Interrupt Enable
-    //sfrb(P2IE, P2IE_);
-    pub const P2SEL_: u16 = 0x002E;    // Port 2 Selection
-    //sfrb(P2SEL, P2SEL_);
-    pub const P2REN_: u16 = 0x002F;    // Port 2 Resistor Enable
-    //sfrb(P2REN, P2REN_);
+    pub const P2IN: u16  = 0x0028;    // Port 2 Input
+    pub const P2OUT: u16 = 0x0029;    // Port 2 Output
+    pub const P2DIR: u16 = 0x002A;    // Port 2 Direction
+    pub const P2IFG: u16 = 0x002B;    // Port 2 Interrupt Flag
+    pub const P2IES: u16 = 0x002C;    // Port 2 Interrupt Edge Select
+    pub const P2IE: u16  = 0x002D;    // Port 2 Interrupt Enable
+    pub const P2SEL: u16 = 0x002E;    // Port 2 Selection
+    pub const P2REN: u16 = 0x002F;    // Port 2 Resistor Enable
 
     ////
     // Timer A2
@@ -368,8 +340,7 @@ pub mod g2211 {
 
     // WATCHDOG TIMER
     pub const __MSP430_HAS_WDT__: bool = true;
-    pub const WDTCTL_: *const u16 = 0x0120 as *mut u16;
-    pub const WDTCTL: *const u16 = WDTCTL_;
+    pub const WDTCTL: *const u16 = 0x0120 as *mut u16;
     pub const WDTIS0: u16    = 0x0001;
     pub const WDTIS1: u16    = 0x0002;
     pub const WDTSSEL: u16   = 0x0004;
@@ -410,23 +381,17 @@ pub mod g2211 {
     // pub const WDTIE: u16 = 0x01
     // pub const WDTIFG: u16 = 0x01
 
-    /************************************************************
-     * Calibration Data in Info Mem
-     ************************************************************/
-
+    ////
+    // Calibration Data in Info Mem
+    ////////
     //    #ifndef __DisableCalData
-
-    pub const CALDCO_1MHZ_: u16 = 0x10FE;    // DCOCTL  Calibration Data for 1MHz
-    //const_sfrb(CALDCO_1MHZ, CALDCO_1MHZ_);
-    pub const CALBC1_1MHZ_: u16 = 0x10FF;    // BCSCTL1 Calibration Data for 1MHz
-    //const_sfrb(CALBC1_1MHZ, CALBC1_1MHZ_);
-
+    pub const CALDCO_1MHZ: u16 = 0x10FE;    // DCOCTL  Calibration Data for 1MHz
+    pub const CALBC1_1MHZ: u16 = 0x10FF;    // BCSCTL1 Calibration Data for 1MHz
     //    #endif // #ifndef __DisableCalData
 
-    /************************************************************
-     * Interrupt Vectors (offset from 0xFFE0)
-     ************************************************************/
-
+    ////
+    // Interrupt Vectors (offset from 0xFFE0)
+    ////////
     pub const PORT1_VECTOR: u16 = 0x0004;  // 0xFFE4 Port 1
     pub const PORT2_VECTOR: u16 = 0x0006;  // 0xFFE6 Port 2
     pub const TIMERA1_VECTOR: u16 = 0x0010;  // 0xFFF0 Timer A CC1-2, TA
